@@ -1,0 +1,71 @@
+<p-accordion [activeIndex]="0">
+  <p-accordionTab header="Flight details">
+    <p-steps [model]="items" [readonly]="false" [activeIndex]="stepperIndex" (activeIndexChange)="onStepperIndexChange($event)"></p-steps>
+    <div class="container" *ngIf="selectedStepperItemData">
+      <div class="card">
+        <h5>FLIGHT DETAILS</h5>
+        <div class="mt-3">
+          <div class="p-fluid">
+            <label pTooltip="Flight number">{{selectedStepperItemData?.marketingFlight?.carrier.code}}{{selectedStepperItemData?.marketingFlight.number}}</label>
+          </div>
+          <div class="p-fluid">
+            <label pTooltip="Flight status" [ngStyle]="{color: selectedStepperItemData?.marketingFlight?.status.code === 'CONFIRMED' ? 'green' : 'red'}">{{selectedStepperItemData?.marketingFlight?.status.name}}</label>
+          </div>
+          <div class="p-fluid mt-2">
+            <label pTooltip="Cabin class">{{selectedStepperItemData?.marketingFlight?.operatingFlight?.cabin.name}}</label>
+          </div>
+          <div class="p-fluid">
+            <label pTooltip="Airplane">{{selectedStepperItemData?.marketingFlight?.operatingFlight?.equipment.name}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="card border">
+        <h5>DEPARTURE</h5>
+        <div class="mt-3">
+          <div class="p-fluid">
+            <label pTooltip="Departure airport">{{selectedStepperItemData?.departFrom.IATACode}}, {{selectedStepperItemData?.departFrom.name}}</label>
+          </div>
+          <div class="p-fluid">
+            <label pTooltip="Departure city">{{selectedStepperItemData?.departFrom?.city?.country.name}}, {{selectedStepperItemData?.departFrom?.city.name}}</label>
+          </div>
+          <div class="p-fluid">
+            <label pTooltip="Departure time [local]">{{selectedStepperItemData?.marketingFlight?.operatingFlight.localScheduledDeparture | date: 'medium'}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="card border">
+        <h5>ARRIVAL</h5>
+        <div class="mt-3">
+          <div class="p-fluid">
+            <label pTooltip="Arrival airport">{{selectedStepperItemData?.arriveOn.IATACode}}, {{selectedStepperItemData?.arriveOn.name}}</label>
+          </div>
+          <div class="p-fluid">
+            <label pTooltip="Arrival city">{{selectedStepperItemData?.arriveOn?.city?.country.name}}, {{selectedStepperItemData?.arriveOn?.city.name}}</label>
+          </div>
+          <div class="p-fluid">
+            <label pTooltip="Arrival time [local]">{{selectedStepperItemData?.marketingFlight?.operatingFlight.localScheduledArrival | date: 'medium'}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </p-accordionTab>
+  <p-accordionTab header="Passengers">
+    <p-table [value]="passengers" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 50px;">Title</th>
+          <th>First name</th>
+          <th>Last name</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-passenger>
+        <tr>
+          <td>{{ passenger.title.name }}</td>
+          <td>{{ passenger.firstName }}</td>
+          <td>{{ passenger.lastName }}</td>
+        </tr>
+      </ng-template>
+  </p-table>
+  </p-accordionTab>
+</p-accordion>

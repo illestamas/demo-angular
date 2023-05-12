@@ -1,0 +1,71 @@
+<div class="block font-bold text-center text-white p-4 border-round header-background">
+  <span>CHECK-IN</span>
+</div>
+
+<div class="wrapper">
+  <div id="left-div" class="left-div">
+    
+  </div>
+  <div id="center-div" class="center-div">
+    <div class="checkin-card border">
+      <div>
+        <div class="header-container mt-3">
+          <span class="header">
+            RETRIEVE YOUR
+          </span>
+          <span class="header">
+            BOOKING
+          </span>
+        </div>
+        
+        <div class="header-container mt-3">
+          <div class="divider"></div>
+        </div>
+      </div>
+  
+      <div>
+        <div>
+          <p>
+            You can find your booking by filling out your family name and the booking code in your booking confirmation.
+          </p>
+        </div>
+        <form [formGroup]="form">
+          <div class="p-fluid">
+            <label for="bookingCode">Booking code</label>
+            <input type="text" pInputText formControlName="bookingCode"/>
+            <div *ngIf="form.controls['bookingCode'].errors">
+              <div class="error-label" *ngIf="form.controls['bookingCode'].errors['required']">Field is required!</div>
+              <div class="error-label" *ngIf="form.controls['bookingCode'].errors['minlength']">Must be between 5 or 6 characters!</div>
+              <div class="error-label" *ngIf="form.controls['bookingCode'].errors['maxlength']">Must be between 5 or 6 characters!</div>
+              <div class="error-label" *ngIf="form.controls['bookingCode'].errors['pattern']">Must only contain letters or numbers between 2 and 8!</div>
+            </div>
+          </div>
+          <div class="p-fluid mt-3">
+            <label for="familyName">Family name</label>
+            <input type="text" pInputText formControlName="familyName"/>
+            <div *ngIf="form.controls['familyName'].errors">
+              <div class="error-label" *ngIf="form.controls['familyName'].errors['required']">Field is required!</div>
+              <div class="error-label" *ngIf="form.controls['familyName'].errors['minlength']">Must be between 2 or 30 characters!</div>
+              <div class="error-label" *ngIf="form.controls['familyName'].errors['maxlength']">Must be between 2 or 30 characters!</div>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <div>
+        <div class="flex justify-content-center mt-3">
+          <button class="mt-6" (click)="loadDetails()" [disabled]="!form.valid">
+            <span class="button-text">Retrieve booking</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="right-div" class="right-div">
+    <div *ngIf="loaded">
+      <div>
+        <app-booking [data]="data"></app-booking>
+      </div>
+    </div>
+  </div>
+</div>

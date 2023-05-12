@@ -1,0 +1,146 @@
+.header-background {
+  background: url("../../assets/header.png");
+  letter-spacing: 3px;
+}
+
+.header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkin-card {
+  padding: 25px;
+  width: 350px;
+  height: 500px;
+}
+
+.card {
+  padding: 25px;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.divider {
+  width: 25px;
+  height: 5px;
+  background-color: black;
+}
+
+p {
+  font-size: 13px;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
+
+button {
+  height: 37px;
+  width: 150px;
+  background: #be1313;
+  background-color: #be1313;
+  border-radius: 2px;
+  border: none;
+}
+
+.button-text {
+  color: white;
+}
+
+label {
+  font-size: medium;
+}
+
+input {
+  margin-top: 5px;
+  height: 30px;
+}
+
+button :hover {
+  cursor: pointer;
+}
+
+button:disabled, button[disabled]{
+  opacity: 50%;
+}
+
+.error-label {
+  font-size: smaller;
+  color: red;
+  margin-top: 5px;
+}
+
+.wrapper {
+  display: flex;
+  margin-top: 50px;
+}
+
+.left-div {
+  width: 33%;
+}
+
+.left-div-after {
+  width: 0;
+  transition: all 1s ease;
+}
+
+.center-div {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+}
+
+.center-div-after {
+  width: 25%;
+  display: flex;
+  transition: all 1s ease;
+  justify-content: center;
+}
+
+.right-div {
+  width: 33%;
+}
+
+.right-div-after {
+  width: 75%;
+  transition: all 1s ease;
+}
+
+.slided {
+  -webkit-animation: slideout 1s forwards;
+  -moz-animation: slideout 1s forwards;
+  animation: slideout 1s forwards;
+}
+
+@-webkit-keyframes slideout {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33vw);
+  }
+}
+@-moz-keyframes slideout {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33vw);
+  }
+}
+@keyframes slideout {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33vw);
+  }
+}

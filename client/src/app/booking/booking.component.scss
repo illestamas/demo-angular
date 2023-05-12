@@ -1,0 +1,22 @@
+label {
+  font-size: medium;
+}
+
+input {
+  margin-top: 5px;
+  height: 30px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  padding: 25px;
+  width: 33%;
+}
+
+.border {
+  border: 1px black;
+}

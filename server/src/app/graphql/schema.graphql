@@ -1,0 +1,22 @@
+type Contact {
+  id: Int
+  address: String
+}
+
+type Booking {
+  id: Int
+  bookingCode: String,
+  contactDetails: [Contact]
+}
+
+
+
+type Query {
+  getBooking(bookingCode: String!): Booking
+}
+
+type Mutation {
+  updateBooking(
+    id: ID!, name: String, age: Int
+  ): Booking
+}
