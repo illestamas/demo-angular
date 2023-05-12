@@ -174,11 +174,19 @@ export class CheckInComponent {
     const familyName = this.form.controls['familyName'].value;
 
     if (bookingCode.toLowerCase() !== this.data.bookingCode.toLowerCase()) {
-        return this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid booking code!' });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid booking code!' });
+
+        return {
+            error: "invalid_booking_code"
+        };
     }
 
     if (familyName.toLowerCase() !== this.data.passengers.lastName.toLowerCase()) {
-        return this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid family name!' });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid family name!' });
+
+        return {
+            error: "invalid_family_name"
+        };
     }
 
     document.getElementById("left-div")?.classList.add("left-div-after");
@@ -194,5 +202,9 @@ export class CheckInComponent {
     document.getElementById("card")?.classList.add("slided");
 
     this.loaded = true;
+
+    return {
+        status: "ok"
+    };
   }
 }
